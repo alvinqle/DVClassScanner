@@ -1,0 +1,8 @@
+creds/*
+data/*
+logs/*
+*.json
+*.log
+*.txt
+*.DS_Store
+*.pyc
