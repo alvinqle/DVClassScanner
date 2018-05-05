@@ -1,5 +1,6 @@
 from dvcs_client import DvcsClient
 import os
+import json
 import logging
 import traceback
 
@@ -15,7 +16,9 @@ DvcsClient = DvcsClient()
 
 def main():
     try:
-        DvcsClient.check_availability('+15551234567', 'DVC', '2018SU', 'COMSC-200')
+        with open("./creds/schedules.json", "r") as infile:
+            schedules = json.load(infile)
+        DvcsClient.check_availability(schedules)
     except Exception as e:
         logging.warning(str(traceback.format_exc()))
         raise e
