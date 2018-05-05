@@ -32,8 +32,8 @@ class DvcsClient:
 
     def check_availability(self, schedules):
         try:
-            # display = Display(visible=0, size=(800, 600))
-            # display.start()
+            display = Display(visible=0, size=(800, 600))
+            display.start()
             driver = webdriver.Firefox()
 
             for user in schedules['users']:
@@ -83,12 +83,12 @@ class DvcsClient:
                                 logging.info('{0}: {1} is full: no text sent'.format(user['phone_number'], course['title']))
                                 print('{0}: {1} is full: no text sent'.format(user['phone_number'], course['title']))
             driver.close()
-            # display.stop()
+            display.stop()
         except Exception as e:
             print(str(traceback.format_exc()))
             logging.warning(str(traceback.format_exc()))
             driver.close()
-            # display.stop()
+            display.stop()
             raise e
 
     def update_courses_list(self):

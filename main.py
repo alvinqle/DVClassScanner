@@ -16,7 +16,8 @@ DvcsClient = DvcsClient()
 
 def main():
     try:
-        with open("./creds/schedules.json", "r") as infile:
+        directory = os.path.dirname(os.path.abspath(__file__))
+        with open("{0}/creds/schedules.json".format(directory), "r") as infile:
             schedules = json.load(infile)
         DvcsClient.check_availability(schedules)
     except Exception as e:
